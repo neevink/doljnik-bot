@@ -65,7 +65,7 @@ show_debtors = f"""
     DECLARE $creditor_id AS Int64;
 
     SELECT username, amount_of_debt FROM `{DEBTS_TABLE_PATH}`
-    JOIN `{USER_INFO_TABLE_PATH}` ON `user_info`.user_id == `debt_table`.creditor_id
+    JOIN `{USER_INFO_TABLE_PATH}` ON `user_info`.user_id == `debt_table`.debtor_id
     WHERE creditor_id == $creditor_id;
 """
 
