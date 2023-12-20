@@ -22,13 +22,9 @@ def handler(event, _):
 
     if event.get('event_metadata', {}).get('event_type', {}) == 'yandex.cloud.events.serverless.triggers.TimerMessage':  # если сработал таймер
         handle_notify_about_debt(bot, pool)
-        return {
-            "statusCode": 200,
-            "body": "!",
-        }
-
-    message = telebot.types.Update.de_json(event["body"])
-    bot.process_new_updates([message])
+    else:
+        message = telebot.types.Update.de_json(event["body"])
+        bot.process_new_updates([message])
     return {
         "statusCode": 200,
         "body": "!",

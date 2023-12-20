@@ -98,7 +98,5 @@ def handle_close_debt(message, bot: TeleBot, pool):
 @logged_execution
 def handle_notify_about_debt(bot: TeleBot, pool):
     debtor_ids = get_debtors(pool)
-    bot.send_message(520249743, str(debtor_ids), reply_markup=keyboards.EMPTY)
-
     for id in debtor_ids:
         bot.send_message(id, texts.YOU_OWE_MONEY_REMINDER, reply_markup=keyboards.EMPTY)
