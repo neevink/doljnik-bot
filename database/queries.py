@@ -76,20 +76,3 @@ show_debts = f"""
     JOIN `{USER_INFO_TABLE_PATH}` ON `user_info`.user_id == `debt_table`.creditor_id
     WHERE debtor_id == $debtor_id;
 """
-
-init_db = f"""
-    CREATE TABLE debt_table
-    (
-        debtor_id Int64,
-        creditor_id Int64,
-        amount_of_debt Float,
-        PRIMARY KEY (`debtor_id`, `creditor_id`)
-    );
-    COMMIT;
-    CREATE TABLE user_info
-    (
-        user_id Int64,
-        username Utf8,
-        PRIMARY KEY (`user_id`)
-    );
-"""
